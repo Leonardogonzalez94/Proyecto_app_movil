@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">NavigatorActivity</string>
+    //String main Activity1
+    <string name="btn_init">Home</string>
+
+    //Main Activity2
+    <string name="btn_info_product1">INFO</string>
+    <string name="btn_info_product2">INFO</string>
+    <string name="btn_info_product3">INFO</string>
+    <string name="btn_info_product4">INFO</string>
+    <string name="text_product1">CARNE</string>
+    <string name="text_product2">VEGETALES</string>
+    <string name="text_product3">LECHE</string>
+    <string name="text_product4">PAQUETES</string>
+    <string name="text_title">SUPERMERCADO</string>
+
+
+
+
+</resources>
