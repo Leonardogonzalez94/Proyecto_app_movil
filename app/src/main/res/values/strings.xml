@@ -14,7 +14,11 @@
     <string name="text_product4">PAQUETES</string>
     <string name="text_title">SUPERMERCADO</string>
 
+    //Main Activity3
+    <string name="btn_info_producto">VOLVER</string>
 
+    //Main Activity4
+    <string name="text_title_home">PRODUCTOS</string>
 
 
 </resources>

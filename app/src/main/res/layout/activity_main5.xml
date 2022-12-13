@@ -4,21 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity3">
+    tools:context=".MainActivity5">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textProductTitle"
-            android:layout_width="wrap_content"
-
+            android:id="@+id/tvNameDetail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="60dp"
-            />
+            android:textSize="68dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,23 +24,29 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imgProduct"
+                android:id="@+id/imgDetail"
                 android:layout_width="350dp"
-                android:layout_height="400dp"
-                 />
+                android:layout_height="350dp"
+                tools:src="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/textProductInfo"
+                android:id="@+id/tvDescriptionDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/tvPriceDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="TextView" />
 
             <Button
-                android:id="@+id/btnProductInfo"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnReturn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_info_producto" />
+                android:text="Button" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
