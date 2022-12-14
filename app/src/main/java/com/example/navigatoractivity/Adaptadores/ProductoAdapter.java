@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.navigatoractivity.Entidades.Producto;
 
-import com.example.navigatoractivity.MainActivity5;
 import com.example.navigatoractivity.R;
 
 import java.util.ArrayList;
