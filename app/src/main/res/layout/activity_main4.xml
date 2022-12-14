@@ -5,29 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity5">
-
-
-
+    android:gravity="center"
+    tools:context=".MainActivity4">
     <TextView
-        android:id="@+id/textTitleHome"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="60dp"
-        android:text="@string/text_title_home" />
-
+        android:text="PRODUCTOS"
+        android:textSize="60dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <ListView
             android:id="@+id/listViewProducts"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
-
 
 </LinearLayout>

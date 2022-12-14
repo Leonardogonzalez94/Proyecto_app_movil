@@ -35,11 +35,11 @@ public class DBHelper extends SQLiteOpenHelper {
     //METODOS CRUD
    // public void insertProduct(Producto producto){
       public void insertProduct(String nombre, String descripcion, String precio, byte[] imagen){
-        String sql = "INSERT INTO PRODUCTS VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO PRODUCTS VALUES(null, ?, ?, ?, ?)";
         SQLiteStatement statement = sqLiteDatabase.compileStatement(sql);
         statement.clearBindings();
 
-       // statement.bindString(1, producto.getId());
+
         statement.bindString(1, nombre);
         statement.bindString(2, descripcion);
         statement.bindString(3, precio);

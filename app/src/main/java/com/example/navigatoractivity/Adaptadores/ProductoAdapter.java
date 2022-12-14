@@ -2,6 +2,8 @@ package com.example.navigatoractivity.Adaptadores;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,25 +21,25 @@ import java.util.ArrayList;
 
 public class ProductoAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Producto>ListsProducts;
+    private ArrayList<Producto>arrayProductos;
 
 
 
-    public ProductoAdapter(Context context, ArrayList<Producto> listsProducts) {
+    public ProductoAdapter(Context context, ArrayList<Producto> arrayProductos) {
         this.context = context;
-        this.ListsProducts = listsProducts;
+        this.arrayProductos = arrayProductos;
 
     }
 
 
     @Override
     public int getCount() {
-        return this.ListsProducts.size();
+        return this.arrayProductos.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return ListsProducts.get(i);
+        return arrayProductos.get(i);
     }
 
     @Override
@@ -47,27 +49,24 @@ public class ProductoAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView ,ViewGroup viewGroup) {
-       // if(inflater ==null){
-           // inflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-       // }
+    public View getView(int i, View view ,ViewGroup viewGroup) {
+
         LayoutInflater inflater =LayoutInflater.from(this.context);
-        convertView= inflater.inflate(R.layout.producto_template, null);
-
-        //if(convertView ==null){
-          //  convertView=inflater.inflate(R.layout.producto_template,null);
-        //}
-
-        Producto producto=ListsProducts.get(i);
-
-        ImageView imgProduct= (ImageView) convertView.findViewById(R.id.imgProductTemplate);
-        TextView tvNameProduct=(TextView) convertView.findViewById(R.id.tvNameProduct);
-        TextView tvDescriptionProduct=(TextView) convertView.findViewById(R.id.tvDescriptionProduct);
-        TextView tvPriceProduct=(TextView) convertView.findViewById(R.id.tvPriceProduct);
-        //Button btnProduct=(Button) convertView.findViewById(R.id.btnProduct);
+        view= inflater.inflate(R.layout.producto_template, null);
 
 
-        //imgProduct.setImageResource(producto.getImagen());
+
+        Producto producto=arrayProductos.get(i);
+
+        ImageView imgProduct= (ImageView) view.findViewById(R.id.imgProductTemplate);
+        TextView tvNameProduct=(TextView) view.findViewById(R.id.tvNameProduct);
+        TextView tvDescriptionProduct=(TextView) view.findViewById(R.id.tvDescriptionProduct);
+        TextView tvPriceProduct=(TextView) view.findViewById(R.id.tvPriceProduct);
+
+
+
+        Bitmap bitmap= BitmapFactory.decodeByteArray(producto.getImagen(), 0,producto.getImagen().length);
+        imgProduct.setImageBitmap(bitmap);
         tvNameProduct.setText(producto.getNombre());
         tvDescriptionProduct.setText(producto.getDescripcion());
         tvPriceProduct.setText(String.valueOf(producto.getPrecio()));
@@ -80,7 +79,8 @@ public class ProductoAdapter extends BaseAdapter {
                 intent.putExtra("name",producto.getNombre());
                 intent.putExtra("description",producto.getDescripcion());
                 intent.putExtra("price",producto.getPrecio());
-                //intent.putExtra("image", producto.getImagen());
+             //   intent.putExtra("image", producto.getImagen());
+                intent.putExtra("id",producto.getId());
 
                 context.startActivity(intent);
 
@@ -88,6 +88,6 @@ public class ProductoAdapter extends BaseAdapter {
 
             }
         });
-        return convertView;
+        return view;
     }
 }

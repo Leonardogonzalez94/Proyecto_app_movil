@@ -1,23 +1,33 @@
 package com.example.navigatoractivity.Entidades;
 
 public class Producto {
-    private int imagen;
+    private int id;
+    private byte[] imagen;
     private String nombre;
     private String descripcion;
     private int precio;
 
-    public Producto(int imagen, String nombre, String descripcion, int precio) {
+    public Producto(int id, byte[] imagen, String nombre, String descripcion, int precio) {
+        this.id=id;
         this.imagen = imagen;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(int imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 
