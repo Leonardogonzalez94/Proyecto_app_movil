@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.navigatoractivity.Entidades.Producto;
 
+import com.example.navigatoractivity.MainActivity6;
 import com.example.navigatoractivity.R;
 
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class ProductoAdapter extends BaseAdapter {
         imgProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(context.getApplicationContext(), MainActivity5.class);
+                Intent intent =new Intent(context.getApplicationContext(), MainActivity6.class);
                 intent.putExtra("name",producto.getNombre());
                 intent.putExtra("description",producto.getDescripcion());
                 intent.putExtra("price",producto.getPrecio());
