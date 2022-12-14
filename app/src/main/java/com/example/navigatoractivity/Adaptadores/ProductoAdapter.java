@@ -67,7 +67,7 @@ public class ProductoAdapter extends BaseAdapter {
         //Button btnProduct=(Button) convertView.findViewById(R.id.btnProduct);
 
 
-        imgProduct.setImageResource(producto.getImagen());
+        //imgProduct.setImageResource(producto.getImagen());
         tvNameProduct.setText(producto.getNombre());
         tvDescriptionProduct.setText(producto.getDescripcion());
         tvPriceProduct.setText(String.valueOf(producto.getPrecio()));
@@ -80,7 +80,7 @@ public class ProductoAdapter extends BaseAdapter {
                 intent.putExtra("name",producto.getNombre());
                 intent.putExtra("description",producto.getDescripcion());
                 intent.putExtra("price",producto.getPrecio());
-                intent.putExtra("image", producto.getImagen());
+                //intent.putExtra("image", producto.getImagen());
 
                 context.startActivity(intent);
 

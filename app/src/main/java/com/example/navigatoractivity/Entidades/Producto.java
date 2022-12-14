@@ -13,11 +13,11 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setId(int imagen) {
+    public void setImagen(int imagen) {
         this.imagen = imagen;
     }
 
