@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.navigatoractivity.Adaptadores.ProductoAdapter;
+import com.example.navigatoractivity.DB.DBFirebase;
 import com.example.navigatoractivity.DB.DBHelper;
 import com.example.navigatoractivity.Entidades.Producto;
 import com.example.navigatoractivity.Servicios.ProductoService;
@@ -27,6 +28,7 @@ public class MainActivity4 extends AppCompatActivity {
     private  ListView listViewProducts;
     private ProductoAdapter productoAdapter;
     private ArrayList<Producto>arrayProductos;
+    private DBFirebase dbFirebase;
 
 
     @SuppressLint("MissingInflatedId")
@@ -37,17 +39,21 @@ public class MainActivity4 extends AppCompatActivity {
         arrayProductos= new ArrayList<>();
         listViewProducts=(ListView) findViewById(R.id.listViewProducts);
         try {
+            //dbFirebase=new DBFirebase();
             dbHelper = new DBHelper(this);
-           productoService = new ProductoService();
-           arrayProductos = productoService.cursorToArray(dbHelper.getProducts());
+            productoService = new ProductoService();
+            arrayProductos=productoService.cursorToArray(dbHelper.getProducts());
+
+
 
 
             //Toast.makeText(this, "Insert OK", Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             Log.e("DB", e.toString());
         }
-        productoAdapter= new ProductoAdapter(this, arrayProductos);
-        listViewProducts.setAdapter(productoAdapter);
+         productoAdapter= new ProductoAdapter(this, arrayProductos);
+         listViewProducts.setAdapter(productoAdapter);
+         dbFirebase.getProducts(productoAdapter, arrayProductos);
 
 
     }

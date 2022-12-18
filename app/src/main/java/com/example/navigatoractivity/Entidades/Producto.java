@@ -1,33 +1,44 @@
 package com.example.navigatoractivity.Entidades;
 
+import java.util.UUID;
+
 public class Producto {
-    private int id;
-    private byte[] imagen;
+    private String id;
+    private String  imagen;
     private String nombre;
     private String descripcion;
     private int precio;
 
-    public Producto(int id, byte[] imagen, String nombre, String descripcion, int precio) {
-        this.id=id;
-        this.imagen = imagen;
+    public Producto(String id,  String nombre, String descripcion, int precio, String imagen) {
+        this.id= id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.imagen = imagen;
     }
 
-    public int getId() {
+    public Producto(String nombre, String descripcion, int precio,String imagen) {
+        this.id= UUID.randomUUID().toString();;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.imagen=imagen;
+
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public byte[] getImagen() {
+   public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(byte[] imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 

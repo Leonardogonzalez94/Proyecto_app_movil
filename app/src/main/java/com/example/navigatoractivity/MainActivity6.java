@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.navigatoractivity.DB.DBFirebase;
 import com.example.navigatoractivity.DB.DBHelper;
 import com.example.navigatoractivity.Entidades.Producto;
 import com.example.navigatoractivity.Servicios.ProductoService;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class MainActivity6 extends AppCompatActivity {
     private Button btnReturn;
     private DBHelper dbHelper;
+    private DBFirebase dbFirebase;
     private ProductoService productoService;
     private ImageView imgDetail;
     private TextView tvNameDetail, tvDescriptionDetail, tvPriceDetail;
@@ -37,13 +39,17 @@ public class MainActivity6 extends AppCompatActivity {
         tvPriceDetail=(TextView) findViewById(R.id.tvPriceDetail);
 
         dbHelper=new DBHelper(this);
+        //dbFirebase=new DBFirebase();
         productoService=new ProductoService();
         Intent intent= getIntent();
         String id= String.valueOf(intent.getIntExtra("id", 0));
         ArrayList<Producto> productBD= productoService.cursorToArray(dbHelper.getProductById(id));
         Producto producto = productBD.get(0);
-        Bitmap bitmap = BitmapFactory.decodeByteArray(producto.getImagen(), 0, producto.getImagen().length);
-        imgDetail.setImageBitmap(bitmap);
+
+
+       // Bitmap bitmap = BitmapFactory.decodeByteArray(producto.getImagen(), 0, producto.getImagen().length);
+        //imgDetail.setImageBitmap(bitmap);
+
 
 
 

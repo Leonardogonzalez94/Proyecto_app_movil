@@ -11,12 +11,14 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.navigatoractivity.DB.DBFirebase;
 import com.example.navigatoractivity.DB.DBHelper;
 import com.example.navigatoractivity.Entidades.Producto;
 import com.example.navigatoractivity.Servicios.ProductoService;
@@ -33,6 +35,7 @@ public class FormProduct extends AppCompatActivity {
    private DBHelper dbHelper;
    private ActivityResultLauncher<String> content;
    private ProductoService productoService;
+   private DBFirebase dbFirebase;
 
 
     @Override
@@ -50,9 +53,22 @@ public class FormProduct extends AppCompatActivity {
         editPriceFormProduct=(EditText) findViewById(R.id.editPriceFormProduct);
         imgFormProduct=(ImageView) findViewById(R.id.imgFormProduct);
 
+        //editPriceFormProduct.setOnKeyListener(new View.OnKeyListener() {
+          //  public boolean onKey(View v, int keyCode, KeyEvent event){
+
+            //    if((event.getAction()== KeyEvent.ACTION_DOWN) &&
+                //        (keyCode== KeyEvent.KEYCODE_ENTER)){
+              //      Toast.makeText(getApplicationContext(), "Hello Enter", Toast.LENGTH_SHORT).show();
+                  //  return true;
+
+               // }
+               //return false;
+           // }
+        //});
 
         try{
             dbHelper= new DBHelper(this);
+            //dbFirebase=  new DBFirebase();
             productoService = new ProductoService();
             content= registerForActivityResult(
                     new ActivityResultContracts.GetContent(),
@@ -87,12 +103,20 @@ public class FormProduct extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                dbHelper.insertProduct(
-                       // editIdFormProduct.getText().toString(),
+                // dbHelper.insertProduct(
+                //
+                 Producto producto= new Producto(
+                        //editIdFormProduct.getText().toString(),
                         editNameFormProduct.getText().toString(),
                         editDescriptionFormProduct.getText().toString(),
-                        editPriceFormProduct.getText().toString(),
-                        productoService.imageViewToByte(imgFormProduct));
+                        Integer.parseInt(editPriceFormProduct.getText().toString()),
+                         "");
+
+                dbHelper.insertProduct(producto);
+               // dbFirebase.insertProduct(producto);
+
+
+
                 Intent intent =new Intent(getApplicationContext(), MainActivity4.class);
                 startActivity(intent);
             }
@@ -106,14 +130,14 @@ public class FormProduct extends AppCompatActivity {
                   Toast.makeText(getApplicationContext(),"Ingrese un ID", Toast.LENGTH_SHORT).show();
                 }else{
 
-                       ArrayList<Producto> productDB =productoService.cursorToArray(dbHelper.getProductById(editIdFormProduct.getText().toString().trim()));
+                       ArrayList<Producto> productDB =productoService.cursorToArray(dbHelper.getProductById(id));
                        if(productDB.size() != 0){
                         Producto producto = productDB.get(0);
                         editNameFormProduct.setText(producto.getNombre());
                         editDescriptionFormProduct.setText(producto.getDescripcion());
                         editPriceFormProduct.setText(String.valueOf(producto.getPrecio()));
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(producto.getImagen(), 0, producto.getImagen().length);
-                        imgFormProduct.setImageBitmap(bitmap);
+                       // Bitmap bitmap = BitmapFactory.decodeByteArray(producto.getImagen(), 0, producto.getImagen().length());
+                        //imgFormProduct.setImageBitmap(bitmap);
                          }else {
                           Toast.makeText(getApplicationContext(),"No existe",Toast.LENGTH_SHORT).show();
                      }

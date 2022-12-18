@@ -65,8 +65,8 @@ public class ProductoAdapter extends BaseAdapter {
 
 
 
-        Bitmap bitmap= BitmapFactory.decodeByteArray(producto.getImagen(), 0,producto.getImagen().length);
-        imgProduct.setImageBitmap(bitmap);
+      //  Bitmap bitmap= BitmapFactory.decodeByteArray(producto.getImagen(), 0,producto.getImagen().length);
+        //imgProduct.setImageBitmap(bitmap);
         tvNameProduct.setText(producto.getNombre());
         tvDescriptionProduct.setText(producto.getDescripcion());
         tvPriceProduct.setText(String.valueOf(producto.getPrecio()));
@@ -76,11 +76,12 @@ public class ProductoAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(context.getApplicationContext(), MainActivity6.class);
+                intent.putExtra("id",producto.getId());
                 intent.putExtra("name",producto.getNombre());
                 intent.putExtra("description",producto.getDescripcion());
                 intent.putExtra("price",producto.getPrecio());
              //   intent.putExtra("image", producto.getImagen());
-                intent.putExtra("id",producto.getId());
+
 
                 context.startActivity(intent);
 
